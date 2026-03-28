@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --color-brand: #F15A29;
+  --color-primary: #000000;
+}
+
+@font-face {
+  font-family: "BrandDisplay";
+  src: url("./assets/fonts/BHFBeats-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-brand {
+  font-family: "BrandDisplay", system-ui, sans-serif;
+}
+
+body {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-animation {
+  animation: marquee 28s linear infinite;
+}
