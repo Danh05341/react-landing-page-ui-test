@@ -1,9 +1,10 @@
+import logoSvg from '../../assets/images/logo.svg'
 import { Reveal } from '../motion/Reveal'
 
 function LogoSlider() {
   const logos = Array.from({ length: 8 }).map((_, index) => ({
     key: `logo-${index}`,
-    src: '/src/assets/images/logo.svg',
+    src: logoSvg,
     alt: `Ionix logo ${index + 1}`,
   }))
 

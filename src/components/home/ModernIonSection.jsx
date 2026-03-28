@@ -1,4 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
+import modernIonBg from '../../assets/images/modern_ion_bg.png'
+import modernIonForeground from '../../assets/images/modern_ion_foreground.png'
 import { EASE_OUT } from '../../lib/motion-presets'
 import { Reveal } from '../motion/Reveal'
 
@@ -38,7 +40,7 @@ function ModernIonSection() {
       <div className="mx-auto mt-10 w-full max-w-[1920px] px-3 sm:mt-16 sm:px-4 md:mt-24 lg:mt-55 lg:px-6">
         <motion.div
           className="group/ion relative aspect-1920/766 min-h-[clamp(300px,48vw,880px)] w-full max-w-full overflow-visible bg-cover bg-center bg-no-repeat transition-[filter] duration-500 ease-out hover:brightness-[1.02]"
-          style={{ backgroundImage: "url('/src/assets/images/modern_ion_bg.png')" }}
+          style={{ backgroundImage: `url(${modernIonBg})` }}
           initial={reduce ? false : { opacity: 0 }}
           whileInView={reduce ? undefined : { opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -48,7 +50,7 @@ function ModernIonSection() {
             <div className="absolute inset-0 flex items-end justify-center px-1 sm:px-2">
               <motion.div
                 className="h-[clamp(200px,52vw,987px)] w-full max-w-[min(100%,1480px)] bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out will-change-transform group-hover/ion:scale-[1.015] sm:h-[clamp(240px,50vw,987px)] lg:h-[clamp(360px,50vw,987px)] lg:w-[clamp(640px,77vw,1480px)]"
-                style={{ backgroundImage: "url('/src/assets/images/modern_ion_foreground.png')" }}
+                style={{ backgroundImage: `url(${modernIonForeground})` }}
                 initial={reduce ? false : { opacity: 0, y: 36 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
