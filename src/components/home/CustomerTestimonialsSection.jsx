@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import arrowRight from '../../assets/images/arrow_right.svg'
@@ -15,6 +15,26 @@ const defaultTestimonials = [
     quote:
       'Our office switched to IONIX for meetings and daily hydration. The team appreciates the consistent quality and the responsive support whenever we adjust our delivery schedule.',
     author: 'Operations Lead',
+  },
+  {
+    quote:
+      'I usually carry the 500ml bottle during workouts. The taste is clean and consistent, and the packaging feels sturdy enough for daily use.',
+    author: 'Fitness Enthusiast',
+  },
+  {
+    quote:
+      'We started using IONIX for our small cafe and customers often mention the water quality. Delivery has been dependable even during busy weeks.',
+    author: 'Cafe Owner',
+  },
+  {
+    quote:
+      'For home use, the larger bottle sizes are very practical. Ordering is straightforward and support has been quick whenever we had questions.',
+    author: 'Family Customer',
+  },
+  {
+    quote:
+      'The branding looks premium and the product quality matches it. It has been a good fit for events where we need reliable bottled water.',
+    author: 'Event Coordinator',
   },
 ]
 
@@ -50,6 +70,7 @@ function CustomerTestimonialsSection({
 }) {
   const reduce = useReducedMotion()
   const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
   const total = testimonials.length
   const active = testimonials[index] ?? testimonials[0]
 
@@ -57,6 +78,14 @@ function CustomerTestimonialsSection({
     if (total <= 1) return
     setIndex((i) => (i + 1) % total)
   }, [total])
+
+  useEffect(() => {
+    if (reduce || paused || total <= 1) return undefined
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % total)
+    }, 5500)
+    return () => clearInterval(timer)
+  }, [paused, reduce, total])
 
   const useQuoteImages = Boolean(quoteLeftImage || quoteRightImage)
   const showCssQuotes = !useQuoteImages && !stripBackgroundImage
@@ -95,7 +124,7 @@ function CustomerTestimonialsSection({
         </h2>
       </Reveal>
 
-      <div className="relative z-10 mt-10 sm:mt-1 xl:mt-[100px] md:mt-5">
+      <div className="relative z-10 mt-10 sm:mt-14 md:mt-20 xl:mt-[100px]">
           <div className="mx-auto w-full max-w-[1850px]">
           <div className="relative w-full overflow-hidden py-6 sm:py-8 md:min-h-0 md:py-10 xl:min-h-[min(480px,55vh)] xl:rounded-[36px] xl:py-14 2xl:py-16">
             {showCssQuotes ? (
@@ -134,20 +163,24 @@ function CustomerTestimonialsSection({
               ) : null}
 
               <motion.article
-                className="relative order-2 mx-auto w-full max-w-[min(100%,560px)] rounded-[20px] bg-white p-4 shadow-[0_16px_40px_rgba(0,0,0,0.07)] transition-[box-shadow,transform] duration-300 ease-out hover:shadow-[0_22px_55px_rgba(0,0,0,0.11)] sm:order-0 sm:max-w-[min(100%,610px)] sm:rounded-[24px] sm:p-6 sm:shadow-[0_24px_60px_rgba(0,0,0,0.08)] sm:shrink-0 sm:hover:shadow-[0_28px_70px_rgba(0,0,0,0.12)] md:mx-0 md:max-w-[clamp(460px,62vw,650px)] md:rounded-[28px] md:p-8 xl:p-10"
+                className="relative order-2 mx-auto w-[calc(100%-1rem)] max-w-[560px] rounded-[20px] bg-white p-4 shadow-[0_16px_40px_rgba(0,0,0,0.07)] transition-[box-shadow,transform] duration-300 ease-out hover:shadow-[0_22px_55px_rgba(0,0,0,0.11)] sm:order-0 sm:w-full sm:max-w-[min(100%,610px)] sm:rounded-[24px] sm:p-6 sm:shadow-[0_24px_60px_rgba(0,0,0,0.08)] sm:shrink-0 sm:hover:shadow-[0_28px_70px_rgba(0,0,0,0.12)] md:mx-0 md:max-w-[clamp(460px,62vw,650px)] md:rounded-[28px] md:p-8 xl:p-10"
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: reduce ? 0 : 0.5, ease: EASE_OUT }}
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+                onTouchStart={() => setPaused(true)}
+                onTouchEnd={() => setPaused(false)}
               >
                 <StarRow />
                 <div className="relative min-h-[120px] sm:min-h-[100px]">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={index}
-                      initial={reduce ? false : { opacity: 0, x: 16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={reduce ? undefined : { opacity: 0, x: -12 }}
+                      initial={reduce ? false : { opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={reduce ? undefined : { opacity: 0, y: -8 }}
                       transition={{ duration: reduce ? 0 : 0.35, ease: EASE_OUT }}
                     >
                       <blockquote className="mt-4 text-left text-sm font-normal leading-relaxed text-(--color-primary) sm:mt-5 sm:text-base md:text-lg md:leading-7">
@@ -170,6 +203,23 @@ function CustomerTestimonialsSection({
                 >
                   <img src={arrowRight} alt="" className="size-3.5 sm:size-4" width={16} height={16} />
                 </motion.button>
+
+                {total > 1 ? (
+                  <div className="mt-5 flex items-center gap-2" aria-label="Testimonial progress">
+                    {testimonials.map((item, i) => (
+                      <button
+                        key={`${item.author}-${i}`}
+                        type="button"
+                        onClick={() => setIndex(i)}
+                        className={clsx(
+                          'h-2 rounded-full transition-all duration-300 ease-out',
+                          i === index ? 'w-6 bg-(--color-brand)' : 'w-2 bg-black/20 hover:bg-black/35',
+                        )}
+                        aria-label={`Show testimonial ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                ) : null}
               </motion.article>
 
               {useQuoteImages && quoteRightImage ? (

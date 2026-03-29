@@ -57,7 +57,7 @@ function Hero() {
               <img
                 src={heroImage}
                 alt="Hero product"
-                className="h-auto w-full transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.02] min-[1200px]:h-full min-[1200px]:w-auto min-[1200px]:max-w-none"
+                className="h-auto w-full transform-gpu transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.01] min-[1200px]:h-full min-[1200px]:w-auto min-[1200px]:max-w-none"
               />
             </motion.div>
 

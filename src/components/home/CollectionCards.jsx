@@ -40,7 +40,7 @@ function CollectionCards() {
   const getCard = (offset) => collectionCards[(activeIndex + offset + length) % length]
 
   return (
-    <Reveal as="section" className="mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-10 md:pb-20 lg:px-[121px]" y={26}>
+    <Reveal as="section" className="mx-auto w-full max-w-[1920px] px-4 pb-8 sm:px-6 sm:pb-12 md:px-10 md:pb-20 lg:px-[121px]" y={26}>
       <div className="relative w-full">
         <div className="pb-6 pt-4 sm:pb-8 sm:pt-6 lg:pb-10">
           <div className="relative min-w-0 max-w-full pl-12 sm:pl-14 lg:pl-16 xl:pl-20">
@@ -61,13 +61,22 @@ function CollectionCards() {
                 return (
                   <motion.article
                     key={`${card.title}-${offset}`}
-                    className={`group/card relative flex snap-center flex-col overflow-hidden rounded-2xl transition-[transform,box-shadow,opacity] duration-300 ease-out sm:rounded-[28px] lg:max-h-[625px] lg:rounded-[32px] ${
+                    layout
+                    className={`group/card relative flex snap-center flex-col overflow-hidden rounded-2xl transform-gpu transition-[transform,box-shadow,opacity] duration-300 ease-out will-change-transform sm:rounded-[28px] lg:max-h-[625px] lg:rounded-[32px] ${
                       isActive
-                        ? 'w-full min-w-0 max-w-full shrink scale-[0.98] shadow-[0px_20px_40px_rgba(14,15,20,0.12)] sm:scale-95 sm:shadow-[0px_30px_50px_rgba(14,15,20,0.15)] sm:hover:shadow-[0px_35px_55px_rgba(14,15,20,0.25)] lg:w-[clamp(280px,38vw,664px)] lg:max-w-full lg:shrink-0 lg:scale-95'
-                        : 'hidden min-w-0 w-full max-w-full shrink scale-[0.96] opacity-90 lg:flex lg:w-[clamp(220px,26vw,547px)] lg:max-w-full lg:shrink-0 lg:scale-95 lg:opacity-100'
+                        ? 'w-full min-w-0 max-w-full shrink shadow-[0px_18px_36px_rgba(14,15,20,0.1)] sm:shadow-[0px_22px_44px_rgba(14,15,20,0.12)] sm:hover:shadow-[0px_28px_52px_rgba(14,15,20,0.18)] lg:w-[clamp(280px,38vw,664px)] lg:max-w-full lg:shrink-0'
+                        : 'hidden min-w-0 w-full max-w-full shrink opacity-80 lg:flex lg:w-[clamp(220px,26vw,547px)] lg:max-w-full lg:shrink-0'
                     }`}
-                    whileHover={reduce || !isActive ? undefined : { y: -4 }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 24 }}
+                    whileHover={reduce || !isActive ? undefined : { y: -3 }}
+                    animate={
+                      reduce
+                        ? undefined
+                        : {
+                            opacity: isActive ? 1 : 0.82,
+                            y: isActive ? 0 : 4,
+                          }
+                    }
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
                       className={`flex w-full min-w-0 flex-col text-(--color-primary) bg-linear-to-b ${card.gradient} min-h-[clamp(200px,52vw,320px)] lg:h-[476px] lg:min-h-0`}
@@ -76,12 +85,12 @@ function CollectionCards() {
                         <img
                           src={heroImage}
                           alt={card.title}
-                          className="h-[min(200px,42vw)] w-auto max-w-full object-contain transition-transform duration-500 ease-out group-hover/card:scale-[1.04] sm:h-[200px] lg:h-[220px]"
+                          className="h-[min(200px,42vw)] w-auto max-w-full object-contain transform-gpu transition-transform duration-500 ease-out group-hover/card:scale-[1.02] sm:h-[200px] lg:h-[220px]"
                           loading="lazy"
                         />
                       </div>
                       <div className={clsx("px-[34px] py-[30px] text-center", isActive && 'hidden')}>
-                        <div className="text-2xl text-left font-bold leading-5 pv-3 px-2.5">
+                        <div className="px-2.5 py-3 text-left text-2xl font-bold leading-5">
                           {card.title}
                         </div>
                       </div>
@@ -93,6 +102,9 @@ function CollectionCards() {
                             {card.title}
                           </div>
                           <span className="px-2.5 py-1 text-lg font-medium leading-5 sm:py-3 sm:text-xl">{card.price}</span>
+                          <p className="px-2.5 pt-1 text-left text-sm leading-relaxed text-white/80 sm:max-w-[360px]">
+                            {card.description}
+                          </p>
                         </div>
                         <motion.button
                           type="button"
@@ -107,6 +119,20 @@ function CollectionCards() {
                   </motion.article>
                 )
               })}
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-2 lg:hidden" aria-label="Collection progress">
+              {collectionCards.map((card, i) => (
+                <button
+                  key={card.title}
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  className={clsx(
+                    'h-2 rounded-full transition-all duration-300 ease-out',
+                    i === activeIndex ? 'w-6 bg-(--color-brand)' : 'w-2 bg-black/25 hover:bg-black/40',
+                  )}
+                  aria-label={`Show ${card.title}`}
+                />
+              ))}
             </div>
           </div>
         </div>

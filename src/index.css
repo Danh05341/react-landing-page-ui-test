@@ -34,3 +34,8 @@ body {
 .marquee-animation {
   animation: marquee 28s linear infinite;
 }
+
+.marquee-animation:hover,
+.marquee-animation:focus-within {
+  animation-play-state: paused;
+}

@@ -62,8 +62,8 @@ function FeedbackFormSection({ className, onSubmit }) {
         >
           <StaggerItem className="py-2.5">
             <div className="font-brand text-[80px] leading-[68px] text-(--color-primary)">
-              <div className="flex max-w-[553px] sm:flex-wrap w-full flex-wrap items-baseline gap-x-2">
-                <div className="max-w-[553px] flex gap-4 flex-wrap">
+              <div className="flex w-full max-w-[553px] flex-wrap items-baseline gap-x-2">
+                <div className="flex max-w-[553px] flex-wrap gap-4">
                   <div className="inline-block">Have</div>
                   <div className="inline-block text-(--color-brand)">Feedback</div>
                 </div>

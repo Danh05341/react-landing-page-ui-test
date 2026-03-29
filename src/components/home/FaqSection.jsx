@@ -90,11 +90,23 @@ function FaqSection({
                       }}
                       transition={{ duration: reduce ? 0 : 0.22, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <div className="min-h-0">
+                      <motion.div
+                        className="min-h-0"
+                        initial={false}
+                        animate={
+                          reduce
+                            ? undefined
+                            : {
+                                opacity: isOpen ? 1 : 0,
+                                y: isOpen ? 0 : -6,
+                              }
+                        }
+                        transition={{ duration: reduce ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      >
                         <p className="pb-5 pr-10 text-sm font-normal leading-relaxed text-(--color-primary)/85 sm:text-base sm:pr-12">
                           {item.answer}
                         </p>
-                      </div>
+                      </motion.div>
                     </motion.div>
                   ) : null}
                 </StaggerItem>
