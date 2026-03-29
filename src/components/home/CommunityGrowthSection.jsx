@@ -22,7 +22,7 @@ function CommunityGrowthSection({
   const bottomRow = stats.slice(2, 4)
 
   return (
-    <section className={clsx('mx-auto w-full max-w-[1920px] px-4 pb-16 sm:px-6 sm:pb-20 md:px-12', className)}>
+    <section className={clsx('mx-auto w-full max-w-[1920px] px-4 pb-16 sm:px-6 sm:pb-20 md:px-10 lg:px-[121px]', className)}>
       <div className="mx-auto w-full max-w-[1681px]">
         <div className="mx-auto flex w-full max-w-[1396px] flex-col gap-8 pt-6 sm:gap-12 sm:pt-8 md:gap-14">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-16 sm:gap-y-8 sm:text-left md:gap-x-20 lg:gap-x-28">
@@ -33,11 +33,11 @@ function CommunityGrowthSection({
               </Reveal>
             ))}
           </div>
-          <div className="flex w-full flex-col items-center gap-7 text-center sm:flex-row sm:items-start sm:justify-between sm:gap-y-0 sm:text-left">
+          <div className="grid w-full grid-cols-2 gap-x-3 gap-y-6 text-center sm:flex sm:items-start sm:justify-between sm:gap-y-0 sm:text-left">
             {bottomRow.map((item, i) => (
               <Reveal
                 key={`${item.value}-${item.label}`}
-                className="min-w-0 max-w-[min(100%,260px)] sm:max-w-[min(100%,280px)] sm:text-left md:max-w-none"
+                className="min-w-0 w-full max-w-none sm:max-w-[min(100%,280px)] sm:text-center md:max-w-none"
                 y={18}
                 delay={reduce ? 0 : 0.08 + i * 0.07}
                 amount={0.12}
@@ -63,12 +63,12 @@ function CommunityGrowthSection({
             loading="lazy"
             decoding="async"
           />
-          <div className="relative z-10 flex min-h-0 flex-col items-center justify-center px-4 py-10 text-center sm:px-6 sm:py-12 md:min-h-full md:px-12 md:py-16">
+          <div className="relative z-10 flex min-h-0 flex-col items-center justify-center py-10 text-center sm:py-12 md:min-h-full md:py-16">
             <div className="mx-auto flex w-full max-w-[720px] flex-col items-center">
-              <h2 className="max-w-full px-0 py-1 font-brand text-[clamp(1.625rem,6.5vw,3.25rem)] leading-[1.12] text-(--color-primary) sm:px-0 sm:py-2.5 md:max-w-[501px] lg:text-[68px] lg:leading-[68px]">
+              <h2 className="max-w-full py-1 font-brand text-[clamp(1.625rem,6.5vw,3.25rem)] leading-[1.12] text-(--color-primary) sm:py-2.5 md:max-w-[501px] lg:text-[68px] lg:leading-[68px]">
                 {title}
               </h2>
-              <p className="mt-1 max-w-full px-0 py-1 text-sm font-normal leading-relaxed text-(--color-primary) sm:mt-0 sm:max-w-[405px] sm:py-2.5">
+              <p className="mt-1 max-w-full py-1 text-sm font-normal leading-relaxed text-(--color-primary) sm:mt-0 sm:max-w-[405px] sm:py-2.5">
                 {description}
               </p>
               <motion.button

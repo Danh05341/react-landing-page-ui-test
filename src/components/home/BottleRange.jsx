@@ -18,14 +18,14 @@ function BottleRange() {
   const reduce = useReducedMotion()
 
   return (
-    <section className="mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-12 md:pb-20">
+    <section className="mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-10 md:pb-20 lg:px-[121px]">
       <div className="mx-auto w-full max-w-[1396px]">
         <div className="py-10">
           <div className="h-px w-full" />
-          <div className="overflow-x-auto pb-6">
+          <div className="pb-6">
             <Stagger
               as="div"
-              className="flex min-w-full items-end justify-center gap-8 md:justify-between"
+              className="flex flex-wrap items-end justify-center gap-8 xl:justify-between"
               stagger={0.07}
               amount={0.15}
             >

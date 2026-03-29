@@ -37,9 +37,20 @@ function ModernIonSection() {
         </h2>
       </Reveal>
 
-      <div className="mx-auto mt-10 w-full max-w-[1920px] px-3 sm:mt-16 sm:px-4 md:mt-24 lg:mt-55 lg:px-6">
+      <div className="mx-auto mt-10 w-full max-w-[1920px] sm:mt-16 md:mt-24 lg:mt-55">
+        <ul className="relative z-20 mb-5 grid grid-cols-1 gap-3 px-4 text-center sm:mb-6 sm:grid-cols-2 sm:gap-4 sm:px-6 md:mb-10 lg:hidden" aria-label="Purification steps">
+          {annotations.map((annotation) => (
+            <li
+              key={annotation.label}
+              className={`text-xs font-bold sm:text-sm ${annotation.className.includes('text-(--color-brand)') ? 'text-(--color-brand)' : 'text-(--color-primary)'}`}
+            >
+              {annotation.label}
+            </li>
+          ))}
+        </ul>
+
         <motion.div
-          className="group/ion relative aspect-1920/766 min-h-[clamp(300px,48vw,880px)] w-full max-w-full overflow-visible bg-cover bg-center bg-no-repeat transition-[filter] duration-500 ease-out hover:brightness-[1.02]"
+          className="group/ion relative z-10 aspect-1920/766 min-h-[clamp(300px,48vw,880px)] w-full max-w-full overflow-visible bg-cover bg-center bg-no-repeat transition-[filter] duration-500 ease-out hover:brightness-[1.02]"
           style={{ backgroundImage: `url(${modernIonBg})` }}
           initial={reduce ? false : { opacity: 0 }}
           whileInView={reduce ? undefined : { opacity: 1 }}
@@ -47,9 +58,9 @@ function ModernIonSection() {
           transition={{ duration: reduce ? 0 : 0.6, ease: EASE_OUT }}
         >
           <div className="relative h-full w-full overflow-visible">
-            <div className="absolute inset-0 flex items-end justify-center px-1 sm:px-2">
+            <div className="absolute inset-0 z-10 flex items-end justify-center px-1 sm:px-2">
               <motion.div
-                className="h-[clamp(200px,52vw,987px)] w-full max-w-[min(100%,1480px)] bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out will-change-transform group-hover/ion:scale-[1.015] sm:h-[clamp(240px,50vw,987px)] lg:h-[clamp(360px,50vw,987px)] lg:w-[clamp(640px,77vw,1480px)]"
+                className="h-[clamp(260px,66vw,987px)] w-full max-w-[min(100%,1480px)] bg-cover bg-top bg-no-repeat transition-transform duration-700 ease-out will-change-transform group-hover/ion:scale-[1.015] sm:h-[clamp(320px,56vw,987px)] sm:bg-center md:h-[clamp(300px,46vw,987px)] lg:h-[clamp(360px,50vw,987px)] lg:w-[clamp(640px,77vw,1480px)]"
                 style={{ backgroundImage: `url(${modernIonForeground})` }}
                 initial={reduce ? false : { opacity: 0, y: 36 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -71,16 +82,6 @@ function ModernIonSection() {
           </div>
         </motion.div>
 
-        <ul className="mt-6 grid grid-cols-1 gap-3 px-2 sm:grid-cols-2 sm:gap-4 lg:hidden" aria-label="Purification steps">
-          {annotations.map((annotation) => (
-            <li
-              key={annotation.label}
-              className={`text-xs font-bold sm:text-sm ${annotation.className.includes('text-(--color-brand)') ? 'text-(--color-brand)' : 'text-(--color-primary)'}`}
-            >
-              {annotation.label}
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   )

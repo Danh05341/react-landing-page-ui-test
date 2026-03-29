@@ -49,7 +49,7 @@ function FaqSection({
 
   return (
     <section className={clsx('bg-white pb-16 pt-8 sm:pb-20 sm:pt-10 md:pb-24', className)}>
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 md:px-10 xl:px-12">
+      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 md:px-10 lg:px-[121px]">
         <div className="mx-auto max-w-[720px] text-center">
           <Reveal y={18}>
             <h2 className="font-brand text-5xl text-(--color-primary) sm:text-6xl md:text-7xl lg:text-[80px] lg:leading-none">

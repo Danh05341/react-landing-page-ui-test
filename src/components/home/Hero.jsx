@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import heroImage from '../../assets/images/hero.svg'
+import heroBackground from '../../assets/images/hero.png'
 import { EASE_OUT } from '../../lib/motion-presets'
 
 function Hero() {
@@ -26,22 +27,24 @@ function Hero() {
 
   return (
     <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1920px] px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-12 md:pt-15">
+      <div className="mx-auto w-full max-w-[1920px] pb-16 sm:pb-20">
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage:
-              'linear-gradient(90deg, rgba(241, 245, 249, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(241, 245, 249, 1) 100%)',
+            backgroundImage: `url(${heroBackground})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
           }}
         >
           <motion.div
-            className="relative h-auto md:h-[1080px]"
+            className="relative h-auto min-[1200px]:h-[1080px]"
             initial="hidden"
             animate="visible"
             variants={container}
           >
             <motion.div
-              className="group mx-auto w-full max-w-[692px] md:absolute md:left-1/2 md:top-[143px] md:h-[895px] md:w-auto md:max-w-none md:-translate-x-1/2"
+              className="group mx-auto w-full max-w-[82vw] sm:max-w-[72vw] min-[1200px]:absolute min-[1200px]:left-1/2 min-[1200px]:top-[143px] min-[1200px]:h-[895px] min-[1200px]:w-auto min-[1200px]:max-w-none min-[1200px]:-translate-x-1/2"
               variants={{
                 hidden: reduce ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.97 },
                 visible: {
@@ -54,24 +57,24 @@ function Hero() {
               <img
                 src={heroImage}
                 alt="Hero product"
-                className="h-auto w-full transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.02] md:h-full md:w-auto md:max-w-none"
+                className="h-auto w-full transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.02] min-[1200px]:h-full min-[1200px]:w-auto min-[1200px]:max-w-none"
               />
             </motion.div>
 
             <motion.div
-              className="mt-6 py-2.5 pr-0 sm:mt-8 sm:pr-3 md:absolute md:left-[262px] md:top-[52px] md:mt-0 md:w-[394px]"
+              className="mt-6 px-4 py-2.5 pr-0 sm:mt-8 sm:px-6 sm:pr-3 min-[1200px]:absolute min-[1200px]:left-[262px] min-[1200px]:top-[52px] min-[1200px]:mt-0 min-[1200px]:w-[394px] min-[1200px]:px-0"
               variants={item}
             >
-              <h1 className="font-brand text-[clamp(2rem,6.5vw,3.75rem)] leading-[1.05] text-(--color-primary) md:text-6xl md:leading-none">
+              <h1 className="font-brand text-[clamp(2rem,6.5vw,3.75rem)] leading-[1.05] text-(--color-primary) min-[1200px]:text-6xl min-[1200px]:leading-none">
                 A Clearer Way to <span className="text-(--color-brand)">Hydrate</span>
               </h1>
             </motion.div>
 
             <motion.div
-              className="mt-5 space-y-3 sm:mt-6 sm:space-y-4 md:absolute md:bottom-[327px] md:left-[262px] md:mt-0 md:w-[264px]"
+              className="mt-5 space-y-3 px-4 sm:mt-6 sm:space-y-4 sm:px-6 min-[1200px]:absolute min-[1200px]:bottom-[327px] min-[1200px]:left-[262px] min-[1200px]:mt-0 min-[1200px]:w-[264px] min-[1200px]:px-0"
               variants={item}
             >
-              <h2 className="font-brand text-2xl leading-tight text-(--color-primary) sm:text-3xl sm:leading-snug md:text-[40px] md:leading-[42px]">
+              <h2 className="font-brand text-2xl leading-tight text-(--color-primary) sm:text-3xl sm:leading-snug min-[1200px]:text-[40px] min-[1200px]:leading-[42px]">
                 Discover Our Water
               </h2>
               <motion.button
@@ -86,7 +89,7 @@ function Hero() {
             </motion.div>
 
             <motion.p
-              className="mt-6 py-2.5 text-left text-base text-(--color-primary) sm:mt-8 sm:text-lg md:absolute md:bottom-[342px] md:right-[262px] md:mt-0 md:w-[405px] md:text-right"
+              className="mt-6 px-4 py-2.5 text-left text-base text-(--color-primary) sm:mt-8 sm:px-6 sm:text-lg min-[1200px]:absolute min-[1200px]:bottom-[342px] min-[1200px]:right-[262px] min-[1200px]:mt-0 min-[1200px]:w-[405px] min-[1200px]:px-0 min-[1200px]:text-right"
               variants={item}
             >
               Crafted with modern ion purification technology to deliver clean, balanced water you can trust every day.

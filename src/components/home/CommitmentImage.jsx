@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { motion, useReducedMotion } from 'motion/react'
 import { EASE_OUT } from '../../lib/motion-presets'
 
-function CommitmentImage({ image, alt = '', className, containerClassName }) {
+function CommitmentImage({ image, alt = '', className, containerClassName, fullWidth = false }) {
   const reduce = useReducedMotion()
 
   if (!image) return null
@@ -11,7 +11,8 @@ function CommitmentImage({ image, alt = '', className, containerClassName }) {
     <section className={clsx('bg-white', className)}>
       <div
         className={clsx(
-          'mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-10 md:pb-20 xl:px-12',
+          'w-full pb-12 sm:pb-16 md:pb-20',
+          fullWidth ? 'max-w-none' : 'mx-auto max-w-[1920px]',
           containerClassName,
         )}
       >

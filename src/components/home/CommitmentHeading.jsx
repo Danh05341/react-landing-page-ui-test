@@ -8,7 +8,7 @@ function CommitmentHeading({
   descriptionClassName = '',
 }) {
   return (
-    <section className="mx-auto mb-10 mt-16 w-full max-w-[1920px] px-4 sm:mb-12 sm:mt-24 sm:px-6 md:mb-15 md:mt-33 md:px-12">
+    <section className="mx-auto mb-10 mt-16 w-full max-w-[1920px] px-4 sm:mb-12 sm:mt-24 sm:px-6 md:mb-15 md:mt-33 md:px-10 lg:px-[121px]">
       <div className="mx-auto flex w-full max-w-[1396px] flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
         <Reveal className="w-full md:w-auto" delay={0} y={20}>
           <h2

@@ -88,7 +88,7 @@ function SiteFooter({
 }) {
   return (
     <Reveal as="footer" className={clsx('bg-black text-white', className)} y={20} amount={0.08}>
-      <div className="mx-auto w-full max-w-[1920px] px-4 pb-10 pt-14 sm:px-6 md:px-10 md:pb-12 md:pt-16 xl:px-12">
+      <div className="mx-auto w-full max-w-[1920px] px-4 pb-10 pt-14 sm:px-6 md:px-10 md:pb-12 md:pt-16 lg:px-[120px]">
         <Stagger
           as="div"
           className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-14 lg:grid-cols-12 lg:gap-10 xl:gap-16"

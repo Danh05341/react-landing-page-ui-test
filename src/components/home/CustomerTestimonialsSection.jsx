@@ -89,25 +89,25 @@ function CustomerTestimonialsSection({
         </>
       )}
 
-      <Reveal className="relative z-10 mx-auto w-full max-w-[1920px] px-4 text-center sm:px-6 md:px-10 xl:px-12" y={22}>
+      <Reveal className="relative z-10 mx-auto w-full max-w-[1920px] px-4 text-center sm:px-6 md:px-10 lg:px-[121px]" y={22}>
         <h2 className="mx-auto max-w-[min(100%,913px)] px-1 py-3 font-brand text-[clamp(2rem,7.2vw+0.25rem,140px)] leading-[1.08] text-(--color-primary) sm:py-4 md:leading-[1.06] 2xl:leading-[120px] 2xl:py-5">
           {title}
         </h2>
       </Reveal>
 
-      <div className="relative z-10 mt-10 sm:mt-14 md:mt-20 xl:mt-[100px]">
-        <div className="mx-auto w-full max-w-[1850px] px-4 sm:px-6 md:px-10 xl:px-12">
+      <div className="relative z-10 mt-10 sm:mt-1 xl:mt-[100px] md:mt-5">
+          <div className="mx-auto w-full max-w-[1850px]">
           <div className="relative w-full overflow-hidden py-6 sm:py-8 md:min-h-0 md:py-10 xl:min-h-[min(480px,55vh)] xl:rounded-[36px] xl:py-14 2xl:py-16">
             {showCssQuotes ? (
               <>
                 <span
-                  className="pointer-events-none absolute -left-2 bottom-0 top-0 z-1 select-none font-serif text-[clamp(8rem,28vw,22rem)] leading-none text-(--color-brand)/[0.14]"
+                  className="pointer-events-none absolute -left-2 bottom-0 top-0 z-1 hidden select-none font-serif text-[clamp(8rem,28vw,22rem)] leading-none text-(--color-brand)/[0.14] md:block"
                   aria-hidden
                 >
                   &ldquo;
                 </span>
                 <span
-                  className="pointer-events-none absolute -right-2 bottom-0 top-0 z-1 select-none font-serif text-[clamp(8rem,28vw,22rem)] leading-none text-(--color-brand)/[0.14]"
+                  className="pointer-events-none absolute -right-2 bottom-0 top-0 z-1 hidden select-none font-serif text-[clamp(8rem,28vw,22rem)] leading-none text-(--color-brand)/[0.14] md:block"
                   aria-hidden
                 >
                   &rdquo;
@@ -117,24 +117,24 @@ function CustomerTestimonialsSection({
 
             <div
               className={clsx(
-                'relative z-20 mx-auto flex w-full max-w-[1200px] items-center justify-center px-0 ',
+                'relative z-20 mx-auto flex w-full justify-center max-w-[min(100%,980px)] lg:max-w-[1100px] xl:max-w-[1200px]',
                 useQuoteImages
-                  ? 'flex-col sm:flex-row'
-                  : 'flex-col items-center justify-center py-2',
+                  ? 'max-md:flex-col max-md:items-center max-md:justify-center md:flex-row md:items-start md:justify-start'
+                  : 'flex-col py-2 max-md:items-center max-md:justify-center',
               )}
             >
               {useQuoteImages && quoteLeftImage ? (
                 <img
                   src={quoteLeftImage}
                   alt={quoteLeftImageAlt}
-                  className="pointer-events-none order-1 h-[clamp(48px,14vw,200px)] w-auto max-w-[min(32vw,120px)] shrink-0 object-contain object-center sm:order-0 sm:max-w-none sm:h-[clamp(72px,16vw,228px)] md:h-[clamp(96px,18vw,228px)]"
+                  className="pointer-events-none order-1 hidden h-[clamp(56px,10vw,140px)] w-auto max-w-[min(24vw,110px)] shrink-0 object-contain object-center md:order-0 md:block md:max-w-none md:h-[clamp(74px,11vw,190px)] lg:h-[clamp(90px,14vw,228px)]"
                   loading="lazy"
                   decoding="async"
                 />
               ) : null}
 
               <motion.article
-                className="relative order-2 w-full max-w-[650px] rounded-[20px] bg-white p-4 shadow-[0_16px_40px_rgba(0,0,0,0.07)] transition-[box-shadow,transform] duration-300 ease-out hover:shadow-[0_22px_55px_rgba(0,0,0,0.11)] sm:order-0 sm:rounded-[24px] sm:p-6 sm:shadow-[0_24px_60px_rgba(0,0,0,0.08)] sm:shrink-0 sm:hover:shadow-[0_28px_70px_rgba(0,0,0,0.12)] md:rounded-[28px] md:p-8 xl:p-10"
+                className="relative order-2 mx-auto w-full max-w-[min(100%,560px)] rounded-[20px] bg-white p-4 shadow-[0_16px_40px_rgba(0,0,0,0.07)] transition-[box-shadow,transform] duration-300 ease-out hover:shadow-[0_22px_55px_rgba(0,0,0,0.11)] sm:order-0 sm:max-w-[min(100%,610px)] sm:rounded-[24px] sm:p-6 sm:shadow-[0_24px_60px_rgba(0,0,0,0.08)] sm:shrink-0 sm:hover:shadow-[0_28px_70px_rgba(0,0,0,0.12)] md:mx-0 md:max-w-[clamp(460px,62vw,650px)] md:rounded-[28px] md:p-8 xl:p-10"
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
@@ -176,7 +176,7 @@ function CustomerTestimonialsSection({
                 <img
                   src={quoteRightImage}
                   alt={quoteRightImageAlt}
-                  className="pointer-events-none order-3 h-[clamp(48px,14vw,200px)] w-auto max-w-[min(32vw,120px)] shrink-0 object-contain object-center sm:order-0 sm:max-w-none sm:h-[clamp(72px,16vw,228px)] md:h-[clamp(96px,18vw,228px)]"
+                  className="pointer-events-none order-3 hidden h-[clamp(56px,10vw,140px)] w-auto max-w-[min(24vw,110px)] shrink-0 object-contain object-center md:order-0 md:block md:max-w-none md:h-[clamp(74px,11vw,190px)] lg:h-[clamp(90px,14vw,228px)]"
                   loading="lazy"
                   decoding="async"
                 />

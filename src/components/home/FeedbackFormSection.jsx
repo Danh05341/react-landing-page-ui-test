@@ -8,10 +8,7 @@ function Field({ id, label, type = 'text', value, onChange, multiline }) {
     'w-full border-0 border-b border-black/25 bg-transparent pb-2 text-base text-(--color-primary) outline-none transition-[border-color,color] duration-300 ease-out placeholder:text-black/25 focus:border-(--color-brand)'
 
   return (
-    <div className="space-y-2">
-      <label htmlFor={id} className="block text-xs font-normal text-black/45 sm:text-sm">
-        {label}
-      </label>
+    <div>
       {multiline ? (
         <textarea
           id={id}
@@ -19,6 +16,8 @@ function Field({ id, label, type = 'text', value, onChange, multiline }) {
           rows={4}
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          placeholder={label}
+          aria-label={label}
           className={clsx(shared, 'min-h-[100px] resize-y')}
         />
       ) : (
@@ -28,6 +27,8 @@ function Field({ id, label, type = 'text', value, onChange, multiline }) {
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          placeholder={label}
+          aria-label={label}
           className={shared}
           autoComplete={type === 'email' ? 'email' : 'name'}
         />
@@ -51,11 +52,11 @@ function FeedbackFormSection({ className, onSubmit }) {
   )
 
   return (
-    <section className={clsx('bg-white pb-16 pt-4 sm:pb-20 md:pb-24', className)}>
-      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 md:px-10 xl:px-12">
+    <section className={clsx('bg-white pb-16 pt-4 sm:pb-24 md:pb-32', className)}>
+      <div className="mx-auto w-full max-w-[1920px] px-4 sm:px-6 md:px-10 lg:px-[121px]">
         <Stagger
           as="div"
-          className="mx-auto grid max-w-[1396px] gap-12 md:grid-cols-2 md:items-start md:gap-16 lg:gap-24"
+          className="mx-auto grid w-full max-w-[1396px] gap-12 md:grid-cols-2 md:items-start md:gap-16 lg:gap-24"
           stagger={0.1}
           amount={0.12}
         >
@@ -80,7 +81,7 @@ function FeedbackFormSection({ className, onSubmit }) {
               <div className="pt-2">
                 <motion.button
                   type="submit"
-                  className="text-base font-medium text-(--color-primary) underline decoration-black/40 underline-offset-[6px] transition-[color,text-decoration-color,transform] duration-300 ease-out hover:decoration-(--color-brand) hover:text-(--color-brand)"
+                  className="text-2xl font-medium text-(--color-primary) underline decoration-black/40 underline-offset-[6px] transition-[color,text-decoration-color,transform] duration-300 ease-out hover:decoration-(--color-brand) hover:text-(--color-brand)"
                   whileHover={reduce ? undefined : { x: 3 }}
                   whileTap={reduce ? undefined : { scale: 0.98 }}
                 >

@@ -66,7 +66,7 @@ function HomePage() {
       <Heading
         title="Discover Our Best Collection"
         description="Experience hydration at its purest with our premium water bottles, available in various sizes for every occasion."
-        textClassName="!max-w-[min(100%,913px)] px-1 sm:px-0"
+        textClassName="!max-w-[min(100%,913px)]"
         titleClassName="!max-w-[min(100%,913px)] !text-[clamp(1.75rem,5.5vw,2.75rem)] !leading-[1.08] sm:!text-[clamp(2rem,4.5vw,3.25rem)] lg:!text-[70px] lg:!leading-none"
         descriptionClassName="!max-w-[min(100%,541px)] !text-base !leading-snug font-regular sm:!text-lg sm:!leading-5"
       />
@@ -85,7 +85,12 @@ function HomePage() {
       />
       <FaqSection />
       <FeedbackFormSection />
-      <CommitmentImage image={commitmentPhoto2} alt="Water splash and purity" />
+      <CommitmentImage
+        image={commitmentPhoto2}
+        alt="Water splash and purity"
+        fullWidth
+        containerClassName="!pb-0"
+      />
       <SiteFooter />
     </main>
   )

@@ -17,10 +17,10 @@ function LogoSlider() {
   ]
 
   return (
-    <Reveal as="section" className="bg-white py-6 sm:py-8 lg:py-10" y={16} amount={0.08}>
-      <div className="mx-auto max-w-[1920px] px-4 sm:px-6">
+    <Reveal as="section" className="bg-white py-3 sm:py-7 lg:py-10" y={16} amount={0.08}>
+      <div className="mx-auto w-full max-w-[1920px]">
         <div className="overflow-hidden">
-          <div className="flex min-w-max items-center justify-start gap-10 py-6 marquee-animation">
+          <div className="flex min-w-max items-center justify-start py-3 sm:py-5 md:gap-4 lg:gap-10 marquee-animation">
             {marqueeTrack.map((logo) => (
               <img
                 key={logo.key}

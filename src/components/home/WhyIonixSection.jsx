@@ -35,7 +35,7 @@ function WhyIonixSection({
   const reduce = useReducedMotion()
 
   return (
-    <section className={clsx('mx-auto w-full max-w-[1777px] px-6 pb-20 md:px-12', className)}>
+    <section className={clsx('mx-auto w-full max-w-[1777px] px-4 pb-20 sm:px-6 md:px-10 lg:px-[121px]', className)}>
       <Stagger
         as="div"
         className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:grid-rows-3"

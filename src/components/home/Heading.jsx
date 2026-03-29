@@ -9,8 +9,8 @@ function Heading({
   descriptionClassName = '',
 }) {
   return (
-    <section className="mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-12 md:pb-20">
-      <Stagger as="div" className={clsx('mx-auto mt-16 w-full max-w-[830px] text-center sm:mt-24 md:mt-32 lg:mt-46', textClassName)}>
+    <section className="mx-auto w-full max-w-[1920px] px-4 pb-12 sm:px-6 sm:pb-16 md:px-10 md:pb-20 lg:px-[121px]">
+      <Stagger as="div" className={clsx('mx-auto w-full max-w-[830px] text-center sm:mt-2 md:mt-4 lg:mt-8', textClassName)}>
         <StaggerItem>
           <h2
             className={clsx(
